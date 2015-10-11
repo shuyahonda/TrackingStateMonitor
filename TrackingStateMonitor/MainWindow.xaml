@@ -1,0 +1,111 @@
+﻿<Window x:Class="TrackingStateMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrackingStateMonitor"
+        mc:Ignorable="d"
+        Title="TrackingStateMonitor - Kinect v2" Height="500" Width="700" Background="#FF646464">
+    <Window.Resources>
+        <local:IntToStringValueConverter x:Key="IntToString" />
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="AnkleLeftLabel" Content="Ankle Left" Margin="0,0,0.5,0.5" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="AnkleLeftInferred" Content="0" Margin="0,0,49,0.5" Height="30" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="AnkleLeftNotTracked" Content="0" Margin="50,0,0,0.5" Height="30" VerticalAlignment="Bottom" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="AnkleRightLabel" Content="Ankle Right" Margin="0,0,0.5,0.5" Grid.Column="1" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="AnkleRightInferred" Content="0" Margin="0,0,53,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="AnkleRightNotTracked" Content="0" Margin="51,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="ElbowLeftLabel" Content="Elbow Left" Margin="0,0,0.5,0.5" Grid.Column="2" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="ElbowLeftInferred" Content="0" Margin="0,0,52,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="ElbowLeftNotTracked" Content="0" Margin="52,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="ElbowRightLabel" Content="Elbow Right" Margin="0,0,0.5,0.5" Grid.Column="3" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="ElbowRightInferred" Content="0" Margin="0,0,56,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="ElbowRightNotTracked" Content="0" Margin="48,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="FootLeftLabel" Content="Foot Left" Margin="0,0,0,0.5" Grid.Column="4" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="FootLeftInferred" Content="0" Margin="0,0,55,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="4" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="FootLeftNotTracked" Content="0" Margin="54,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Column="4" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="FootRightLabel" Content="Foot Right" Margin="0,0,0.5,0.5" Grid.Row="1" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="FootRightInferred" Content="0" Margin="0,0,49,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="FootRightNotTracked" Content="0" Margin="50,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandLeftLabel" Content="Hand Left" Margin="0,0,0.5,0.5" Grid.Row="1" Grid.Column="1" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="HandLeftInferred" Content="0" Margin="0,0,53,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandLeftNotTracked" Content="0" Margin="51,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandRightLabel" Content="Hand Right" Margin="0,0,0.5,0.5" Grid.Row="1" Grid.Column="2" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="HandRightInferred" Content="0" Margin="0,0,52,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandRightNotTracked" Content="0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="2" Foreground="White" FontWeight="Bold" Margin="52,0,0,0" FontSize="16"/>
+        <Label x:Name="HandTipLeftLabel" Content="HandTipLeft" Margin="0,0,0.5,0.5" Grid.Row="1" Grid.Column="3" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="HandTipLeftInferred" Content="0" Margin="0,0,56,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandTipLeftNotTracked" Content="0" Margin="48,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandTipRightLabel" Content="HandTipRight" Margin="0,0,0,0.5" Grid.Row="1" Grid.Column="4" Foreground="White" FontWeight="Bold" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="HandTipRightInferred" Content="0" Margin="0,0,60,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="4" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HandTipRightNotTracked" Content="0" Margin="44,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="1" Grid.Column="4" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="KneeRightLabel" Content="KneeRight" Margin="0,0,0,0.5" Grid.Row="2" Grid.Column="4" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontWeight="Bold" Foreground="White" FontSize="17.333"/>
+        <Label x:Name="KneeRightInferred" Content="0" Margin="0,0,50,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="4" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="KneeRightNotTracked" Content="0" Margin="54,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="4" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="KneeLeftLabel" Content="KneeLeft" Margin="0,0,0.5,0.5" Grid.Row="2" Grid.Column="3" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontWeight="Bold" Foreground="White" FontSize="17.333"/>
+        <Label x:Name="KneeLeftInferred" Content="0" Margin="0,0,56,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="KneeLeftNotTracked" Content="0" Margin="48,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="3" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HipRightLabel" Content="HipRight" Margin="0,0,0.5,0.5" Grid.Row="2" Grid.Column="2" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontWeight="Bold" Foreground="White" FontSize="17.333"/>
+        <Label x:Name="HipRightInferred" Content="0" Margin="0,0,52,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HipRightNotTracked" Content="0" Margin="52,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HipLeftLabel" Content="HipLeft" Margin="0,0,0.5,0.5" Grid.Row="2" Grid.Column="1" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontWeight="Bold" Foreground="White" FontSize="17.333"/>
+        <Label x:Name="HipLeftInferred" Content="0" Margin="0,0,53,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HipLeftNotTracked" Content="0" Margin="51,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Grid.Column="1" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HeadLabel" Content="Head" Margin="0,0,0.5,0.5" Grid.Row="2" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontWeight="Bold" Foreground="White" FontSize="17.333"/>
+        <Label x:Name="HeadInferred" Content="0" Margin="0,0,51,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="HeadNotTracked" Content="0" Margin="53,0,1,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="2" Foreground="White" FontWeight="Bold" FontSize="16"/>
+        <Label x:Name="NeckLabel" Content="Neck" Margin="0,0,0.5,0.5" Grid.Row="3" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="NeckInferred" Content="0" Margin="0,0,54,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="NeckNotTracked" Content="0" Margin="50,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ShoulderLeftLabel" Content="Shoulder Left" Margin="0,0,0.5,0.5" Grid.Row="3" Grid.Column="1" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="ShoulderLeftInferred" Content="0" Margin="0,0,53,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ShoulderLeftNotTracked" Content="0" Margin="51,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="1" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ShoulderRightLabel" Content="Shoulder Right" Margin="0,0,0.5,0.5" Grid.Row="3" Grid.Column="2" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="ShoulderRightInferred" Content="0" Margin="0,0,52,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="2" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ShoulderRightNotTracked" Content="0" Margin="52,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="2" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="SpineBaseLabel" Content="Spine Base" Margin="0,0,0.5,0.5" Grid.Row="3" Grid.Column="3" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="SpineBaseInferred" Content="0" Margin="0,0,56,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="3" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="SpineBaseNotTracked" Content="0" Margin="48,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="3" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="SpineMidLabel" Content="Spine Mid" Margin="0,0,0,0.5" Grid.Row="3" Grid.Column="4" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="SpineMidInferred" Content="0" Margin="0,0,55,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="4" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="SpineMidNotTracked" Content="0" Margin="54,0,0,0" Height="30" VerticalAlignment="Bottom" Grid.Row="3" Grid.Column="4" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="WristRightLabel" Content="Wrist Right" Margin="0,0,0,0.5" Grid.Row="4" Grid.Column="4" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="WristRightInferred" Content="0" Margin="0,0,50,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="4" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="WristRightNotTracked" Content="0" Margin="54,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="4" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="WristLeftLabel" Content="Wrist Left" Margin="0,0,0.5,0.5" Grid.Row="4" Grid.Column="3" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="WristLeftInferred" Content="0" Margin="0,0,56,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="3" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="WristLeftNotTracked" Content="0" Margin="48,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="3" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ThumbRightLabel" Content="ThumbRight" Margin="0,0,0.5,0.5" Grid.Row="4" Grid.Column="2" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="ThumbRightInferred" Content="0" Margin="0,0,52,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="2" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ThumbRightNotTracked" Content="0" Margin="52,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="2" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ThumbLeftLabel" Content="ThumbLeft" Margin="0,0,0.5,0.5" Grid.Row="4" Grid.Column="1" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="ThumbLeftInferred" Content="0" Margin="0,0,53,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="1" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="ThumbLeftNotTracked" Content="0" Margin="51,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" Grid.Column="1" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="SpineShoulderLabel" Content="Spine Shoulder" Margin="0,0,0.5,0.5" Grid.Row="4" FontWeight="Bold" Foreground="White" Background="{DynamicResource {x:Static SystemColors.AppWorkspaceBrushKey}}" FontSize="17.333"/>
+        <Label x:Name="SpineShoulderInferred" Content="0" Margin="0,0,54,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Label x:Name="SpineShoulderNotTracked" Content="0" Margin="50,0,0,0.5" Height="30" VerticalAlignment="Bottom" Grid.Row="4" FontWeight="Bold" Foreground="White" FontSize="16"/>
+        <Button x:Name="resetButton" Content="Reset" Margin="10,10,10,10" Grid.Row="5" Grid.Column="2" Click="resetButton_Click"/>
+        <Button x:Name="startButton" Content="Start" Margin="10,10,10,10" Grid.Row="5" Click="startButton_Click"/>
+        <Button x:Name="stopButton" Content="Stop" Grid.Column="1" Margin="10,10,10,10" Grid.Row="5" Click="stopButton_Click"/>
+        <TextBlock x:Name="frameLabel"  Grid.Column="4" Margin="0,0,85,0.5" Grid.Row="5" HorizontalAlignment="Right" Width="39" FontWeight="Bold" Foreground="White" TextAlignment="Right" Height="40" Text="{Binding AllFrameCount, Converter={StaticResource IntToString}}" FontSize="18.667" VerticalAlignment="Bottom"/>
+        <Label x:Name="label1" Content="/Frame" Margin="0,6.5,5,13.5" Grid.Row="5" Grid.Column="4" HorizontalAlignment="Right" Width="80" Foreground="White" VerticalAlignment="Center" FontSize="18.667"/>
+        <TextBlock x:Name="readStateLabel" Grid.Column="3" Margin="20,10,20,10" Grid.Row="5" Background="#FF889AEB" FontWeight="Bold" Foreground="White" Text="取得中" TextAlignment="Center" FontSize="16" VerticalAlignment="Center"/>
+
+    </Grid>
+</Window>
